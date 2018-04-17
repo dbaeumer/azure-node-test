@@ -8,6 +8,10 @@ import * as net from 'net';
 
 const server = net.createServer((connection) => {
 	console.log(`Server received a connection on 8000`);
+	connection.on('data', (data) => {
+		console.log('Received data');
+		console.log(data.toString('utf8'));
+	});
 	connection.on('close', () => {
 		console.log('8000 connection got closed.');
 	});

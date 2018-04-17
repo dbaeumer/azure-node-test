@@ -7,6 +7,10 @@ exports.__esModule = true;
 var net = require("net");
 var server = net.createServer(function (connection) {
     console.log("Server received a connection on 8000");
+    connection.on('data', function (data) {
+        console.log('Received data');
+        console.log(data.toString('utf8'));
+    });
     connection.on('close', function () {
         console.log('8000 connection got closed.');
     });
